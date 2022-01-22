@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div v-for="option in options" :key="option">
+        <div v-for="(option, index) in options" :key="option">
             <input :name="name"  type="radio" :id="option"> 
-            <label :for="option">{{ option }}</label>
+            <label :class="{ 'text-primary': answer ===index }" :for="option">{{ option }}</label>
         </div>
     </div>
 </template>
