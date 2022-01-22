@@ -4,10 +4,15 @@ async function get() {
         return response.json();
     })
     .then(function (result) {
-        return result;
+        return {
+            success: true,
+            data: result,
+        };
     })
-    .catch(function (error) {
-        return error;
+    .catch(function () {
+        return {
+            success: false
+        };
     });
 }
 

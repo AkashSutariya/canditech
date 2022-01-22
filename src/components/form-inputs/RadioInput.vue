@@ -2,7 +2,13 @@
     <div>
         <div v-for="(option, index) in options" :key="option">
             <input :name="name"  type="radio" :id="option"> 
-            <label :class="{ 'text-primary': answer ===index }" :for="option">{{ option }}</label>
+            <label
+              class="ml-2 p-2"
+              :class="{ 'bg-success': answer === index }"
+              :for="option"
+            >
+              {{ option }}
+            </label>
         </div>
     </div>
 </template>
@@ -15,10 +21,5 @@ export default {
     answer: Number,
     name: String,
   },
-  methods: {
-    handleInput(event) {
-      this.$emit("input", event.target.value);
-    }
-  }
 };
 </script>

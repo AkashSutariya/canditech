@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div v-if="assessment" class="container">
         <h1 class="text-center">
             {{ assessment.title }}
         </h1>
@@ -29,6 +29,11 @@
             <hr />
         </div>
     </div>
+    <div v-else class="container">
+        <h1 class="text-center text-danger">
+            {{ errorMessage }}
+        </h1>
+    </div>
 </template>
 
 <script>
@@ -46,14 +51,18 @@ export default {
     },
     data() {
         return {
-            assessment: {},
-            test: '',
+            assessment: null,
+            errorMessage: '',
         }
     },
     methods: {
         getAssessmentData() {
             assessment.get().then((data) => {
-                this.assessment = data;
+                if (data.success) {
+                    this.assessment = data.data;
+                } else {
+                    this.errorMessage = "Error while fetching data!"
+                }
             });
         }
     },
