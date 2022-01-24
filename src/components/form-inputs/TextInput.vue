@@ -8,9 +8,8 @@
 
 <script>
 export default {
-  name: "TextInput",
   props: {
-    value: String
+    value: [String, Number]
   },
   methods: {
     handleInput(event) {

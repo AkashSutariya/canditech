@@ -4,7 +4,7 @@
             <input :name="name"  type="radio" :id="option"> 
             <label
               class="ml-2 p-2"
-              :class="{ 'bg-success': answer === index }"
+              :class="{ 'bg-success': parseInt(answer) === index }"
               :for="option"
             >
               {{ option }}
@@ -15,10 +15,9 @@
 
 <script>
 export default {
-  name: "RadioInput",
   props: {
     options: Array,
-    answer: Number,
+    answer: [Number, String],
     name: String,
   },
 };
